@@ -123,10 +123,12 @@ def rijksregisternummer_hoofdgetal(rrn):
 
     In bovenstaand voorbeeld is het hoofdgetal dus 420122051.
     """
-    rrn.remove("-")
-    rrn.remove(".")
-    hoofdgetal = int(rrn[:12])
-    return hoofdgetal
+    for i in rrn:
+        rrn.remove("-")
+    for j in rrn:
+        rrn.remove(".")
+    result = int(rrn[:9])
+    return result
 
 
 def is_geldig_rijksregisternummer(rrn):
