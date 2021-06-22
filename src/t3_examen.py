@@ -1,5 +1,5 @@
 import math
-
+from math import pi
 
 def is_isogram(word):
     """Geef True terug als het woord een isogram is, anders False
@@ -9,7 +9,13 @@ def is_isogram(word):
     Dus, "vier" is bijvoorbeeld een isogram, maar "veer" niet omdat
     de letter "e" er meer dan 1 keer in voorkomt.
     """
-    return 0
+    word = word.lower()
+    for char in word:
+        if word.count(char) > 1:
+            return False
+        else:
+            return True
+
 
 
 def faculteit(n):
@@ -26,7 +32,10 @@ def faculteit(n):
 
     De faculteit van 1 is 1.
     """
-    return 0
+    fact = 1
+    for num in range(2, n + 1):
+        fact *= num
+    return fact
 
 
 def rijksregisternummer_controlegetal(rrn):
@@ -35,7 +44,9 @@ def rijksregisternummer_controlegetal(rrn):
     Het controlegetal is het getal gevormd door de laatste twee cijfers
     van het rijksregisternummer.
     """
-    return 0
+    length = len(rrn)
+    last_char = int(rrn[length - 2:])
+    return last_char
 
 
 def rijksregisternummer_geboortejaar(rrn):
@@ -49,7 +60,8 @@ def rijksregisternummer_geboortejaar(rrn):
 
     In bovenstaand voorbeeld is het geboortejaar 42 (1942).
     """
-    return 0
+    first_char = int(rrn[:2])
+    return first_char
 
 
 def rijksregisternummer_geboortemaand(rrn):
@@ -62,7 +74,8 @@ def rijksregisternummer_geboortemaand(rrn):
 
     In bovenstaand voorbeeld is het geboortemaand 1 (januari).
     """
-    return 0
+    middle_char = int(rrn[3:5])
+    return middle_char
 
 
 def rijksregisternummer_geboortedag(rrn):
@@ -75,7 +88,8 @@ def rijksregisternummer_geboortedag(rrn):
 
     In bovenstaand voorbeeld is het geboortedag 22.
     """
-    return 0
+    birthday = int(rrn[6:8])
+    return birthday
 
 
 def rijksregisternummer_is_vrouw(rrn):
@@ -91,7 +105,11 @@ def rijksregisternummer_is_vrouw(rrn):
 
     In bovenstaand voorbeeld is de persoon dus een man.
     """
-    return 0
+    gender = int(rrn[9:12])
+    if gender%2 == 0:
+        return True
+    else:
+        return False
 
 
 def rijksregisternummer_hoofdgetal(rrn):
@@ -105,7 +123,10 @@ def rijksregisternummer_hoofdgetal(rrn):
 
     In bovenstaand voorbeeld is het hoofdgetal dus 420122051.
     """
-    return 0
+    rrn.remove("-")
+    rrn.remove(".")
+    hoofdgetal = int(rrn[:12])
+    return hoofdgetal
 
 
 def is_geldig_rijksregisternummer(rrn):
@@ -138,8 +159,8 @@ def volume_kegel(r, h):
     wordt berekend door:
     V = 1/3 * π * r^2 * h
     """
-
-    return 0
+    V = 1/3 * pi * r**2 * h
+    return V
 
 
 def benader_pi(n):
